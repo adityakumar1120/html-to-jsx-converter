@@ -58,7 +58,7 @@ export default function Layout() {
       // }}
       ></textarea>
       </div>
-      <div className='md:w-[48%] relative max-h-[300px] min-h-[300px] md:min-h-[100%] md:max-h-[100%] rounded shadow-md overflow-y-auto'>
+      <div className='md:w-[48%] relative max-h-[300px] min-h-[300px] md:min-h-[100%] md:max-h-[500px] rounded shadow-md overflow-y-auto'>
       <div className='flex items-center justify-between gap-1 py-2 px-4 bg-[#8F87F1] min-w-[80px] cursor-pointer text-center text-white absolute right-2 top-2 rounded'
       onClick={e => {
         navigator.clipboard.writeText(jsx)
