@@ -13,8 +13,8 @@ export default function Layout() {
   const convertHtmlToJsx = ()=>{
     console.log(jsx);
     console.log('hii');
-    const classFix = html.replaceAll('class=' , 'className')
-    const fixFor = classFix.replaceAll('for=', 'htmlFor')
+    const classFix = html.replaceAll('class=' , 'className=')
+    const fixFor = classFix.replaceAll('for=', 'htmlFor=')
     const fixSelfClosing = fixFor.replaceAll(/<(\s*(img|input|br|hr|meta|link)[^>]*?)>/g , '<$1/>')
     setJsx(prev => setStyle(fixSelfClosing))    
     console.log('hii bootm');
