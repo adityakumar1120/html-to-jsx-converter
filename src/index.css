@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+/* textarea::-webkit-scrollbar{
+    display: none;
+} */
+
+
+.code-highlight {
+   
+    white-space: pre-wrap;  
+    word-wrap: break-word; 
+    pointer-events: none;
+}
