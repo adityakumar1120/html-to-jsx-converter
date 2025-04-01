@@ -30,7 +30,7 @@ export default function Layout() {
         return `${camelCase} : "${value}"`
       }).join(', ')
       console.log(styleObject);
-      return `style{{${styleObject}}}`
+      return `style={{${styleObject}}}`
     })
   }
   return (
