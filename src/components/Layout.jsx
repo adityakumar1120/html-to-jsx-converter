@@ -20,8 +20,8 @@ const onChange = (value) => {
 }, [html]); 
 
   const convertHtmlToJsx = ()=>{
-    // console.log(jsx);
-    // console.log('hii');
+    console.log(jsx);
+    console.log('hii');
     const classFix = html.replaceAll('class=' , 'className')
     const fixFor = classFix.replaceAll('for=', 'htmlFor')
     const fixSelfClosing = fixFor.replaceAll(/<(\s*(img|input|br|hr|meta|link)[^>]*?)>/g , '<$1/>')
@@ -39,7 +39,7 @@ const onChange = (value) => {
         return `${camelCase} : "${value}"`
       }).join(', ')
       console.log(styleObject);
-      return `style{{${styleObject}}}`
+      return `style={{${styleObject}}}`
     })
   }
   return (
