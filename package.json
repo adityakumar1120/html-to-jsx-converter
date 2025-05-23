@@ -10,10 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@codemirror/lang-html": "^6.4.9",
     "@tailwindcss/vite": "^4.0.17",
+    "@uiw/react-codemirror": "^4.23.12",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-syntax-highlighter": "^15.6.1",
     "tailwindcss": "^4.0.17"
   },
   "devDependencies": {

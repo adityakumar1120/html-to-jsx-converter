@@ -1,9 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import CodeMirror from '@uiw/react-codemirror';
+import { html as htmlHighlight} from '@codemirror/lang-html';
+
 
 export default function Layout() {
 
   const [html, setHtml] = useState(``)
   const [jsx , setJsx] = useState('')
+  
+const onChange = (value) => {
+      console.log('Updated Code:', value);
+      console.log('hii');
+    setHtml(value);
+  };
   useEffect(() => {
     if (html) {
         convertHtmlToJsx();
@@ -11,13 +20,13 @@ export default function Layout() {
 }, [html]); 
 
   const convertHtmlToJsx = ()=>{
-    console.log(jsx);
-    console.log('hii');
+    // console.log(jsx);
+    // console.log('hii');
     const classFix = html.replaceAll('class=' , 'className')
     const fixFor = classFix.replaceAll('for=', 'htmlFor')
     const fixSelfClosing = fixFor.replaceAll(/<(\s*(img|input|br|hr|meta|link)[^>]*?)>/g , '<$1/>')
     setJsx(prev => setStyle(fixSelfClosing))    
-    console.log('hii bootm');
+    // console.log('hii bootm');
   }
   function setStyle(html){
     return html.replaceAll(/style="(.*?)"/g , (match , styles) =>{
@@ -36,14 +45,23 @@ export default function Layout() {
   return (
    <>
     <div className='flex md:flex-row flex-col max-w-[1100px] mx-auto w-full px-8 py-4 gap-3 md:gap-0 md:justify-between min-h-[70vh]'>
-      <div className='md:max-h-[500px] min-h-[300px] md:w-[48%] relative shadow-md'>
-        <div className='flex items-center justify-between gap-1 py-2 px-4 bg-[#C68EFD] min-w-[80px] cursor-pointer text-center text-white absolute right-2 top-2 rounded '
+      <div className='md:max-h-[500px] overflow-auto min-h-[300px] md:w-[48%] relative shadow-md'>
+        <div className='flex z-10 items-center justify-between gap-1 py-2 px-4 bg-[#C68EFD] min-w-[80px] cursor-pointer text-center text-white absolute right-2 top-2 rounded '
         onClick={e => {
           navigator.clipboard.writeText(html)
           .then(e => alert('copied'))
         }}
         >HTML <i className="ri-clipboard-line"></i></div>
-      <textarea className='w-full h-full border min-h-[300px] resize-none outline-0 rounded py-4 px-4 pt-11' name="" id="" value={html}
+        <CodeMirror
+        value={html}
+        height="100%"
+        extensions={[htmlHighlight()]}  
+        onChange={onChange}
+        theme="light" // or 'dark', 'dracula', etc.
+      />
+      {/* <textarea className='w-full h-full border min-h-[300px] resize-none outline-0 rounded py-4 px-4 pt-11'
+      ref={textareaRef}
+      name="" id="realtimeEditor" value={html}
       onChange={e => setHtml(e.target.value) } 
 
       // onPaste={e => {
@@ -56,7 +74,7 @@ export default function Layout() {
       //       convertHtmlToJsx(); // Runs after state updates
       //   }, 0);
       // }}
-      ></textarea>
+      ></textarea> */}
       </div>
       <div className='md:w-[48%] relative max-h-[300px] min-h-[300px] md:min-h-[100%] md:max-h-[500px] rounded shadow-md overflow-y-auto'>
       <div className='flex items-center justify-between gap-1 py-2 px-4 bg-[#8F87F1] min-w-[80px] cursor-pointer text-center text-white absolute right-2 top-2 rounded'

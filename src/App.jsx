@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Layout from './components/Layout'
 import Header from './components/Header'
+import CodeEditor from './components/CodeEditor'
 
 function App() {
   const [count, setCount] = useState(0)
